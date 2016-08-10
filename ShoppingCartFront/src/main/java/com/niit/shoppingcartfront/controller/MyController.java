@@ -45,13 +45,5 @@ public class MyController {
 		return mv;
 	}	
 	
-	@RequestMapping(value = "here/register", method = RequestMethod.POST)
-	public ModelAndView registerUser(@ModelAttribute User user) {
-	    userDAO.saveOrUpdate(user);
-		ModelAndView mv = new ModelAndView("/home");
-		mv.addObject("successMessage", "You are successfully register");
-
-		return mv;
-	}
-
+	
 }

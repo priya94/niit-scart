@@ -5,12 +5,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.shoppingcart.model.User;
 import com.niit.shoppingcart.dao.UserDAO;
+
 
 @Controller
 public class UserController {
@@ -20,12 +23,14 @@ public class UserController {
 	@Autowired
 	User user;
 
+	
+
 	@RequestMapping("/login")
 	public ModelAndView isValidUser(@RequestParam(value = "name") String name,
 			@RequestParam(value = "password") String password, HttpSession session) {
 
 		ModelAndView mv = new ModelAndView("home");
-		boolean isValidUser = userDAO.isValidUser(name, password);
+		boolean isValidUser = userDAO.isValidUser(name, password,false);
 
 		if (isValidUser == true) {
 
@@ -33,18 +38,17 @@ public class UserController {
 			session.setAttribute("loggedInUser", user.getName());
 			System.out.println(user.getName() + "logged in");
 
-			 if (user.isIsadmin()) {
-	    	 mv.addObject("isIsadmin", "true");	
-	    	 System.out.println(user.getName() + "admin logged in");
-			 }
-			else {
-		 mv.addObject("isIsadmin", "false");
-			// cart = cartDAO.get(userID);
-			// mv.addObject("cart", cart);
-			// List<Cart> cartList = cartDAO.list();
-			// mv.addObject("cartList", cartList);
-			// mv.addObject("cartSize", cartList.size());
-			 }
+			if (user.isIsadmin()) {
+				mv.addObject("isIsadmin", "true");
+				System.out.println(user.getName() + ":admin logged in");
+			} else {
+				mv.addObject("isIsadmin", "false");
+				// cart = cartDAO.get(userID);
+				// mv.addObject("cart", cart);
+				// List<Cart> cartList = cartDAO.list();
+				// mv.addObject("cartList", cartList);
+				// mv.addObject("cartSize", cartList.size());
+			}
 
 		} else {
 
@@ -55,18 +59,28 @@ public class UserController {
 
 		return mv;
 	}
+
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpServletRequest request, HttpSession session) {
 		ModelAndView mv = new ModelAndView("home");
 		session.invalidate();
 		session = request.getSession(true);
-//		session.setAttribute("category", category);
-//		session.setAttribute("categoryList", categoryDAO.list());
-	
+		// session.setAttribute("category", category);
+		// session.setAttribute("categoryList", categoryDAO.list());
+
 		mv.addObject("logoutMessage", "You successfully logged out");
 		mv.addObject("loggedOut", "true");
-	
+
 		return mv;
-	 }
+	}
+
+	@RequestMapping(value="here/register",method=RequestMethod.POST)
+	public ModelAndView register(@ModelAttribute User user) {
+		userDAO.saveOrUpdate(user);
+		ModelAndView mv = new ModelAndView("/home");
+		mv.addObject("successMessage", "You successfully Logged in");
+
+		return mv;
+	}
 
 }

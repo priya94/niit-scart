@@ -6,10 +6,17 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="<c:url value="/resources/css/Loginstyle.css/" /> " rel="stylesheet" >
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link
-	href=C:\Users\hp\workspace\TestProject\src\main\webapp\WEB-INF\resources\css\log.css
-	rel=stylesheet>
 <title>Shopping cart</title>
 </head>
 <body>
@@ -64,6 +71,14 @@
 
 		</c:if>
 	</div>
+	
+	<div id="registerhere">
+		<c:if test="${isregister==true || invalidCredentials==true}">
+			<div id="error">${errorMessage}</div>
+			<%@ include file="register.jsp"%>
+
+		</c:if>
+	</div>
 
 	<div id="logout">
 		<c:if test="${not empty loggedInUser}">
@@ -87,5 +102,21 @@
 				<%@ include file="categories.jsp"%>
 			</c:if>
 		</div>
+		
+		<div id="products">
+			<c:if test="${isIsadminClickedCategories==true}">
+				<%@ include file="adminhome.jsp"%>
+				<%@ include file="products.jsp"%>
+			</c:if>
+		</div>
+		
+		<div id="suppliers">
+			<c:if test="${isIsadminClickedCategories==true}">
+				<%@ include file="adminhome.jsp"%>
+				<%@ include file="suppliers.jsp"%>
+			</c:if>
+		</div>
+		</div>
+		
 </body>
 </html>
