@@ -33,6 +33,8 @@ public class AdminController {
 
 	@Autowired
 	private SupplierDAO supplierDAO;
+	
+	
 
 	@RequestMapping("/categories")
 	public ModelAndView category() {

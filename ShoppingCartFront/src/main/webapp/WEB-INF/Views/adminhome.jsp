@@ -10,21 +10,21 @@
 <title>Admin home</title>
 </head>
 <body>
-<c:url var="action" value="here/register"></c:url>
+<c:url var="action" value="here/adminhome"></c:url>
 		<form:form action="${action}" method="post" modelAttribute="user">
 	
  <table>
  <tr>
  <td align="left"><a href="categories"
- style="textfont-size: 200%; font-family:verdana; color:#FFFFFF">Manage Categories</a>
+ style="textfont-size: 200%; font-family:verdana;">Manage Categories</a>
 </td>
 
 <td align="left"><a href="products"
- style="textfont-size: 200%; font-family:verdana; color:#FFFFFF">Manage Categories</a>
+ style="textfont-size: 200%; font-family:verdana; ">Manage Categories</a>
 </td>
 
 <td align="left"><a href="suppliers"
- style="textfont-size: 200%; font-family:verdana; color:#FFFFFF">Manage Categories</a>
+ style="textfont-size: 200%; font-family:verdana;">Manage Categories</a>
 </td>
  
  

@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.niit.shoppingcart.model.User;
 import com.niit.shoppingcart.dao.UserDAO;
 
-
 @Controller
 public class UserController {
 
@@ -23,14 +22,13 @@ public class UserController {
 	@Autowired
 	User user;
 
-	
-
-	@RequestMapping("/login")
-	public ModelAndView isValidUser(@RequestParam(value = "name") String name,
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public ModelAndView ValidUser(@RequestParam(value = "name") String name,
 			@RequestParam(value = "password") String password, HttpSession session) {
 
-		ModelAndView mv = new ModelAndView("home");
-		boolean isValidUser = userDAO.isValidUser(name, password,false);
+		ModelAndView mv = new ModelAndView("/home");
+		boolean isValidUser = userDAO.isValidUser(name, password);
+		System.out.println("isValidUser="+isValidUser+"name="+name+"password="+password);
 
 		if (isValidUser == true) {
 
@@ -38,7 +36,7 @@ public class UserController {
 			session.setAttribute("loggedInUser", user.getName());
 			System.out.println(user.getName() + "logged in");
 
-			if (user.isIsadmin()) {
+			if (user.isIsadmin()==true) {
 				mv.addObject("isIsadmin", "true");
 				System.out.println(user.getName() + ":admin logged in");
 			} else {
@@ -50,19 +48,13 @@ public class UserController {
 				// mv.addObject("cartSize", cartList.size());
 			}
 
-		} else {
-
-			mv.addObject("invalidCredentials", "true");
-			mv.addObject("errorMessage", "Invalid Credentials");
-
-		}
-
+		} 
 		return mv;
 	}
 
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpServletRequest request, HttpSession session) {
-		ModelAndView mv = new ModelAndView("home");
+		ModelAndView mv = new ModelAndView("/home");
 		session.invalidate();
 		session = request.getSession(true);
 		// session.setAttribute("category", category);
@@ -74,13 +66,5 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(value="here/register",method=RequestMethod.POST)
-	public ModelAndView register(@ModelAttribute User user) {
-		userDAO.saveOrUpdate(user);
-		ModelAndView mv = new ModelAndView("/home");
-		mv.addObject("successMessage", "You successfully Logged in");
-
-		return mv;
-	}
 
 }

@@ -22,6 +22,7 @@ public class MyController {
 	
 	@Autowired
 	UserDAO userDAO;
+	
 	@RequestMapping("/")
 	public ModelAndView myfun1()
 	{
@@ -45,5 +46,14 @@ public class MyController {
 		return mv;
 	}	
 	
+
+	@RequestMapping(value = "here/register", method = RequestMethod.POST)
+	public ModelAndView register(@ModelAttribute User user) {
+		userDAO.saveOrUpdate(user);
+		ModelAndView mv = new ModelAndView("/home");
+		mv.addObject("successMessage", "You successfully Logged in");
+
+		return mv;
+	}
 	
 }
