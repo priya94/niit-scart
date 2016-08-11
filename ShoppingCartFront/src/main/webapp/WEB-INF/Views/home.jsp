@@ -4,8 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
+
+<link href="<c:url value="/resources/css/Navheader.css"/>" rel="stylesheet">
+
+<img src="<%=request.getContextPath()%>/resources/images/657.png"/>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,7 +33,28 @@
 </head>
 <body>
 
-	<h2>SHOPPINGCART</h2>
+<header>
+<body>
+<div id="nav"><br>
+<div id="nav_wrapper"><br>
+<ul>
+<li> <a href="#">Sign In</a></li>
+<li> <a href="#">Home</a></li>
+<li> <a href="#">Brands</a>
+
+</li>
+<li> <a href="#">Products</a></li>
+<li> <a href="#">Contact</a></li>
+<li> <a href="#">About Us</a></li>
+<li> <a href="#">Sign Up</a></li>
+</ul>
+</div>
+
+</div>
+</body>
+</header>
+
+	
 	<div class="container">
 		<div class="flat-form">
 			<ul class="tabs">
@@ -120,6 +149,10 @@
 			</c:if>
 		</div>
 	</div>
+<footer>
 
+<p>This is my shopping website</p>
+
+</footer>
 </body>
 </html>

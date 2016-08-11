@@ -20,11 +20,11 @@
 </td>
 
 <td align="left"><a href="products"
- style="textfont-size: 200%; font-family:verdana; ">Manage Categories</a>
+ style="textfont-size: 200%; font-family:verdana; ">Manage Products</a>
 </td>
 
 <td align="left"><a href="suppliers"
- style="textfont-size: 200%; font-family:verdana;">Manage Categories</a>
+ style="textfont-size: 200%; font-family:verdana;">Manage Suppliers</a>
 </td>
  
  
