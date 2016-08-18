@@ -1,5 +1,7 @@
 package com.niit.shoppingcartfront.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,33 +37,34 @@ public class AdminController {
 	private SupplierDAO supplierDAO;
 	
 	
+	
 
-	@RequestMapping("/categories")
+	@RequestMapping("/manageCatagories")
 	public ModelAndView category() {
 
 		ModelAndView mv = new ModelAndView("/home");
 		mv.addObject("category", category);
-		mv.addObject("isIsadminCLickedCategory", "true");
+		mv.addObject("isIsadminClickedCategories", "true");
 		mv.addObject("categoryList", categoryDAO.list());
 		return mv;
 	}
 
-	@RequestMapping("/products")
+	@RequestMapping("/manageProducts")
 	public ModelAndView product() {
 
 		ModelAndView mv = new ModelAndView("/home");
 		mv.addObject("product", product);
-		mv.addObject("isIsadminClickedProduct", "true");
+		mv.addObject("isIsadminClickedProducts", "true");
 		mv.addObject("productList", productDAO.list());
 		return mv;
 	}
 
-	@RequestMapping("/suppliers")
+	@RequestMapping("/manageSuppliers")
 	public ModelAndView supplier() {
 
 		ModelAndView mv = new ModelAndView("/home");
 		mv.addObject("supplier", supplier);
-		mv.addObject("isIsadminClickedSupplier", "True");
+		mv.addObject("isIsadminClickedSuppliers", "true");
 		mv.addObject("supplierList", supplierDAO.list());
 		return mv;
 	}
