@@ -14,18 +14,19 @@ public class UserTest {
 		UserDAO userDAO = (UserDAO) context.getBean("userDAO");
 		User user = (User) context.getBean("user");
 
-		user.setId("USR002");
-		user.setName("USRNameABCDE");
-		user.setPassword("EFGHI");
-		user.setMobilenumber("9116029241");
-		user.setMailid("priya@gmail.com");
-		user.setAddress("KLMNOPQR");
+		user.setId("USR005");
+		user.setPassword("niit");
+		user.setName("niit");
+		user.setMobile_number("9875478035");
+		user.setMail_id("peyeno94@gmail.com");
+		user.setAddress("lkiughfoijv");
+		user.setIsadmin(false);
 		userDAO.saveOrUpdate(user);
 		System.out.println("NO of users:"+userDAO.list().size());
 
 		//userDAO.delete("USR002");
 
-		if(userDAO.get("USR002")== null)
+		if(userDAO.get("USR001")== null)
 		{
 			System.out.println("User does not exist");
 		}

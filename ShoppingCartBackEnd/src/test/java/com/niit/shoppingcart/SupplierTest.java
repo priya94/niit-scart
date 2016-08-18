@@ -14,7 +14,7 @@ public class SupplierTest {
 		Supplier supplier = (Supplier) context.getBean("supplier");
 		
 		
-	    supplier.setId("SP001");
+	    supplier.setId("SP002");
 		supplier.setName("SPNameABCD");
 		supplier.setAddress("SPAddressPQRST");
 	    supplierDAO.saveOrUpdate(supplier);
@@ -23,7 +23,7 @@ public class SupplierTest {
 		// supplierDAO.delete("SP001"); -->Delete Operation 
 		
 	    //Retrieve Operation
-	    if(supplierDAO.get("SP001")== null)
+	    if(supplierDAO.get("SP003")== null)
 		{
 			System.out.println("Supplier does not exist");
 		}

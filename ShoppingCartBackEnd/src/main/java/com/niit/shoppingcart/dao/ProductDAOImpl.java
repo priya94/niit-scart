@@ -23,7 +23,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Transactional
 	public Product get(String id) {
-		String hql = "from Category where id=" + "'" + id + "'";
+		String hql = "from Product where id=" + "'" + id + "'";
 		@SuppressWarnings("unchecked")
 		Query<Product> query = sessionFactory.getCurrentSession().createQuery(hql);
 

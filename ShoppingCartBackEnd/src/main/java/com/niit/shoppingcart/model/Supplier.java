@@ -1,23 +1,39 @@
 package com.niit.shoppingcart.model;
+
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table
+@Table(name = "supplier")
 @Component
 public class Supplier {
 	@Id
 	private String id;
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-	@Column(name="address")
+	@Column(name = "address")
 	private String address;
-
 	
+	
+
+	@OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER)
+	private Set<Product> product;
+	public Set<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(Set<Product> product) {
+		this.product = product;
+	}
+
 	public String getId() {
 		return id;
 	}

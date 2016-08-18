@@ -16,7 +16,8 @@ import com.niit.shoppingcart.model.User;
 public class UserDAOImpl implements UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	@Autowired
+	User user;
 	public UserDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 
@@ -24,7 +25,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Transactional
 	public User get(String id) {
-		String hql = "from Category where id=" + "'" + id + "'";
+		String hql = "from User where id=" + "'" + id + "'";
 		@SuppressWarnings("unchecked")
 		Query<User> query = sessionFactory.getCurrentSession().createQuery(hql);
 
@@ -58,5 +59,25 @@ public class UserDAOImpl implements UserDAO {
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		return listUser;
 	}
+	
+	@Transactional
+	public boolean isValidUser( String id,String password) {
+		String hql = "from User where id= '" + id + "' and " + " password ='" + password+"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<User> list = (List<User>) query.list();
+		
+		if (list != null && !list.isEmpty()) {
+			return true;
+		}
+		
+		return false;
+	}
+
+//	public boolean isValidUser(String name, String password, boolean b) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }
