@@ -10,13 +10,54 @@
 <html>
 <head>
 
+<link href="<c:url value="/resources/css/Navheader.css"/>"
+	rel="stylesheet">
+
+<img src="<%=request.getContextPath()%>/resources/images/657.png" />
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="<c:url value="/resources/css/Loginstyle.css/" /> "
+	rel="stylesheet">
+
+<link href="<c:url value="/resources/images/657.png/" /> "
+	rel="stylesheet">
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Shopping cart</title>
 </head>
 <body>
 
-	
+	<header>
+	<body>
+		<div id="nav">
+			<br>
+			<div id="nav_wrapper">
+				<br>
+				<ul>
+					<li><a href="#">Sign In</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Brands</a></li>
+					<li><a href="#">Products</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Sign Up</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</body>
+	</header>
 
 
 	<div class="container">
@@ -116,7 +157,7 @@
 	</div>
 	<footer>
 
-	<p></p><br><br><br><br><br>
+	<p>This is my shopping website</p><br><br><br><br><br>
 
 	</footer>
 </body>

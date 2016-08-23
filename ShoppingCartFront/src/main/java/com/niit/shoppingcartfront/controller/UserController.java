@@ -53,19 +53,19 @@ public class UserController {
 	
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView ValidUser(@RequestParam(value = "name") String userID,
+	public ModelAndView ValidUser(@RequestParam(value = "name") String name,
 			@RequestParam(value = "password") String password, HttpSession session) {
 
 		log.debug("Starting of the method login");
-		log.info("userID is {}  password is {}", userID , password);
+		log.info("name is {}  password is {}", name , password);
 		
 		ModelAndView mv = new ModelAndView("/home");
-		boolean isValidUser = userDAO.isValidUser(userID, password);
-		System.out.println("isValidUser="+isValidUser+"name="+userID+"password="+password);
+		boolean isValidUser = userDAO.isValidUser(name, password);
+		System.out.println("isValidUser="+isValidUser+"name="+name+"password="+password);
 
 		if (isValidUser == true) {
 
-			user = userDAO.get(userID);
+			user = userDAO.get(name);
 			session.setAttribute("loggedInUser", user.getName());
 			System.out.println(user.getName() + "logged in");
 
